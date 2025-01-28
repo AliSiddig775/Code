@@ -1,0 +1,13 @@
+name: arc-env
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - requests
+  - numpy
+  - pandas
+  - scikit-learn
+  - keras
+  - pip
+  - pip:
+      - tensorflow  # TensorFlow is a dependency for Keras
