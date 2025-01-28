@@ -1,0 +1,33 @@
+name: Process Data
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  process-data:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests numpy scikit-learn keras
+
+    - name: Run data processing script
+      run: python process_data.py
+
+    - name: Upload data artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: processed-data
+        path: arc_data_temp
